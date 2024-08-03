@@ -46,7 +46,7 @@ fun GesturesScreen() = FlorisScreen {
             """.trimIndent()
         )
 
-        /*PreferenceGroup(title = stringRes(R.string.pref__glide__title)) {
+        PreferenceGroup(title = stringRes(R.string.pref__glide__title)) {
             SwitchPreference(
                 prefs.glide.enabled,
                 title = stringRes(R.string.pref__glide__enabled__label),
@@ -88,7 +88,7 @@ fun GesturesScreen() = FlorisScreen {
                 summary = stringRes(R.string.pref__glide__immediate_backspace_deletes_word__summary),
                 enabledIf = { prefs.glide.enabled isEqualTo true },
             )
-        }*/
+        }
 
         PreferenceGroup(title = stringRes(R.string.pref__gestures__general_title)) {
             ListPreference(
