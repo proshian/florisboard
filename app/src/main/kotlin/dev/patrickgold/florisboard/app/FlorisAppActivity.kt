@@ -31,7 +31,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -144,19 +143,19 @@ class FlorisAppActivity : ComponentActivity() {
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
 
-        if (intent?.action == Intent.ACTION_VIEW && intent.categories?.contains(Intent.CATEGORY_BROWSABLE) == true) {
+        if (intent.action == Intent.ACTION_VIEW && intent.categories?.contains(Intent.CATEGORY_BROWSABLE) == true) {
             intentToBeHandled = intent
             return
         }
-        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+        if (intent.action == Intent.ACTION_VIEW && intent.data != null) {
             intentToBeHandled = intent
             return
         }
-        if (intent?.action == Intent.ACTION_SEND && intent.clipData != null) {
+        if (intent.action == Intent.ACTION_SEND && intent.clipData != null) {
             intentToBeHandled = intent
             return
         }
@@ -214,10 +213,6 @@ class FlorisAppActivity : ComponentActivity() {
                 }
             }
             intentToBeHandled = null
-        }
-
-        SideEffect {
-            navController.setOnBackPressedDispatcher(this.onBackPressedDispatcher)
         }
     }
 }

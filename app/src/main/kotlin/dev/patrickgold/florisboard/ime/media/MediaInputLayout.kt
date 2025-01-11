@@ -29,7 +29,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Backspace
+import androidx.compose.material.icons.automirrored.outlined.Backspace
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -101,7 +101,7 @@ fun MediaInputLayout(
                     inputEventDispatcher = keyboardManager.inputEventDispatcher,
                     keyData = TextKeyData.DELETE,
                 ) {
-                    Icon(imageVector = Icons.Outlined.Backspace, contentDescription = null)
+                    Icon(imageVector = Icons.AutoMirrored.Outlined.Backspace, contentDescription = null)
                 }
             }
         }
@@ -113,12 +113,13 @@ internal fun KeyboardLikeButton(
     modifier: Modifier = Modifier,
     inputEventDispatcher: InputEventDispatcher,
     keyData: KeyData,
+    element: String = FlorisImeUi.EmojiKey,
     content: @Composable RowScope.() -> Unit,
 ) {
     val inputFeedbackController = LocalInputFeedbackController.current
     var isPressed by remember { mutableStateOf(false) }
     val keyStyle = FlorisImeTheme.style.get(
-        element = FlorisImeUi.EmojiKey,
+        element = element,
         code = keyData.code,
         isPressed = isPressed,
     )
